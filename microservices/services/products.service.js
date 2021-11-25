@@ -78,7 +78,7 @@ module.exports = {
 				value: "number|integer|positive"
 			},
 			async handler(ctx) {
-				const doc = await this.adapter.updateById(ctx.params.id, { $inc: { quantity: ctx.params.value } });
+				const doc = await this.adapter.updateById(ctx.params.id, {$inc: {quantity: ctx.params.value}});
 				const json = await this.transformDocuments(ctx, ctx.params, doc);
 				await this.entityChanged("updated", json, ctx);
 
@@ -97,7 +97,7 @@ module.exports = {
 			},
 			/** @param {Context} ctx  */
 			async handler(ctx) {
-				const doc = await this.adapter.updateById(ctx.params.id, { $inc: { quantity: -ctx.params.value } });
+				const doc = await this.adapter.updateById(ctx.params.id, {$inc: {quantity: -ctx.params.value}});
 				const json = await this.transformDocuments(ctx, ctx.params, doc);
 				await this.entityChanged("updated", json, ctx);
 
@@ -117,9 +117,9 @@ module.exports = {
 		 */
 		async seedDB() {
 			await this.adapter.insertMany([
-				{ name: "Samsung Galaxy S10 Plus", quantity: 10, price: 704 },
-				{ name: "iPhone 11 Pro", quantity: 25, price: 999 },
-				{ name: "Huawei P30 Pro", quantity: 15, price: 679 },
+				{name: "Samsung Galaxy S10 Plus", quantity: 10, price: 704},
+				{name: "iPhone 11 Pro", quantity: 25, price: 999},
+				{name: "Huawei P30 Pro", quantity: 15, price: 679},
 			]);
 		}
 	},
