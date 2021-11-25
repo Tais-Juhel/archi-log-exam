@@ -10,9 +10,7 @@ module.exports = {
 	/**
 	 * Settings
 	 */
-	settings: {
-
-	},
+	settings: {},
 
 	/**
 	 * Dependencies
@@ -59,16 +57,12 @@ module.exports = {
 	/**
 	 * Events
 	 */
-	events: {
-
-	},
+	events: {},
 
 	/**
 	 * Methods
 	 */
-	methods: {
-
-	},
+	methods: {},
 
 	/**
 	 * Service created lifecycle event handler

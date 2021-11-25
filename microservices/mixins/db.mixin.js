@@ -1,13 +1,13 @@
 "use strict";
 
 const fs = require("fs");
-const DbService	= require("moleculer-db");
+const DbService = require("moleculer-db");
 
 /**
  * @typedef {import('moleculer').Context} Context Moleculer's Context
  */
 
-module.exports = function(collection) {
+module.exports = function (collection) {
 	const cacheCleanEventName = `cache.clean.${collection}`;
 
 	const schema = {
@@ -71,7 +71,7 @@ module.exports = function(collection) {
 			fs.mkdirSync("./data");
 		}
 
-		schema.adapter = new DbService.MemoryAdapter({ filename: `./data/${collection}.db` });
+		schema.adapter = new DbService.MemoryAdapter({filename: `./data/${collection}.db`});
 	}
 
 	return schema;
