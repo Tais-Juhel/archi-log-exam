@@ -45,7 +45,7 @@ module.exports = function (collection) {
 			// call the `seedDB` method of the service.
 			if (this.seedDB) {
 				const count = await this.adapter.count();
-				if (count == 0) {
+				if (count === 0) {
 					this.logger.info(`The '${collection}' collection is empty. Seeding the collection...`);
 					await this.seedDB();
 					this.logger.info("Seeding is done. Number of records:", await this.adapter.count());

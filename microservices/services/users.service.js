@@ -26,12 +26,13 @@ module.exports = {
 			"_id",
 			"username",
 			"email",
-			"password"
+			"password",
+			"token"
 		],
 		entityValidator: {
 			username: "string|min:3",
 			email: "string",
-			password: "string|min:3"
+			password: "string|min:3",
 		}
 
 	},
@@ -40,6 +41,21 @@ module.exports = {
 	 * Dependencies
 	 */
 	dependencies: [],
+
+	/**
+	 * Action Hooks
+	 */
+	hooks: {
+		before: {
+			/**
+			 *
+			 * @param {Context} ctx
+			 */
+			create(ctx) {
+				ctx.params.token = null;
+			}
+		}
+	},
 
 	/**
 	 * Actions
@@ -77,8 +93,15 @@ module.exports = {
 							message: "n'à pas été trouvé"
 						}]);
 					} else {
-						let token = user._id;
-						let hashedToken = bcrypt.hashSync(token, saltRounds);
+						let token;
+						let hashedToken;
+						if (user.token !== null) {
+							hashedToken = user.token;
+						} else {
+							hashedToken = bcrypt.hashSync(user._id, saltRounds);
+							ctx.call("users.update", { id: user._id, token: hashedToken})
+							db.persistence.compactDatafile();
+						}
 						return {"username": user.username, "hashedToken": hashedToken};
 					}
 				}

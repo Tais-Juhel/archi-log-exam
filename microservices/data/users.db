@@ -1,6 +1,7 @@
-{"username":"user5","email":"test5@test.fr","password":"testtest5","_id":"KDfOdhdgdrlJWQ13"}
-{"username":"user3","email":"test3@test.fr","password":"testtest3","_id":"KDfOodrzeredJWQ13"}
-{"username":"user4","email":"test4@test.fr","password":"testtest4","_id":"KDfOohdhdO1lJWQ13"}
-{"username":"user2","email":"test2@test.fr","password":"testtest2","_id":"KDfOoheheZO1lJWQ13"}
-{"username":"testUsername","email":"test@test.fr","password":"testtest","_id":"KDfdgdgZO1lJWQ13"}
-{"username":"user77","email":"user77@test.fr","password":"test78","_id":"X5wbwJGP0a7jPCjv"}
+{"username":"user5","email":"test5@test.fr","password":"testtest5","token":"$2a$10$J4WHKJigGcK079PfSmaF1.QGebka8DRXpfOHGd1DNxCFBbSpGXmJ6","_id":"KDfOdhdgdrlJWQ13"}
+{"username":"user3","email":"test3@test.fr","password":"testtest3","token":null,"_id":"KDfOodrzeredJWQ13"}
+{"username":"user4","email":"test4@test.fr","password":"testtest4","token":null,"_id":"KDfOohdhdO1lJWQ13"}
+{"username":"user2","email":"test2@test.fr","password":"testtest2","token":null,"_id":"KDfOoheheZO1lJWQ13"}
+{"username":"testUsername","email":"test@test.fr","password":"testtest","token":null,"_id":"KDfdgdgZO1lJWQ13"}
+{"username":"usernull","email":"null@null.fr","password":"passwordnll","token":null,"_id":"Ng31kt2cW1pKMHTN"}
+{"username":"user77","email":"user77@test.fr","password":"test78","token":null,"_id":"X5wbwJGP0a7jPCjv"}
