@@ -554,6 +554,8 @@
 					{id: "users", caption: "Users service"},
 					{id: "questions", caption: "Questions service"},
 					{id: "products", caption: "Products service"},
+					{id: "categorie", caption: "Categorie service"},
+					{id: "game", caption: "Game service"},
 					{id: "nodes", caption: "Nodes"},
 					{id: "services", caption: "Services"}
 				],
@@ -721,6 +723,123 @@
 							status: null,
 							duration: null
 						},
+
+					],
+					categorie:[
+						//list
+					{
+							id: "list",
+							action: "categorie.list",
+							rest: "/api/categorie/",
+							response: null,
+							status: null,
+							duration: null,
+							afterResponse: response => !this.fields.categorieID && (this.fields.categorieID = response.rows[0]._id)
+						},
+						//create
+						{
+							id: "create",
+							action: "categorie.create",
+							rest: "/api/categorie/",
+							method: "POST",
+							fields: [
+								{
+									field: "name",
+									label: "name",
+									type: "text",
+									paramType: "body",
+									model: "categorieName"
+								},
+								{
+									field: "description",
+									label: "description",
+									type: "text",
+									paramType: "body",
+									model: "categorieDescription"
+								},
+								
+							],
+							response: null,
+							status: null,
+							duration: null,
+							afterResponse: response => this.fields.categorieID = response._id
+						},
+						{
+							id: "get", action: "categorie.get", rest: "/api/categorie/:id", method: "GET", fields: [
+								{field: "id", label: "ID", type: "text", paramType: "url", model: "categorieID"}
+							], response: null, status: null, duration: null
+						},
+
+
+					],
+					game:[
+					{
+							id: "list",
+							action: "game.list",
+							rest: "/api/game/",
+							response: null,
+							status: null,
+							duration: null,
+							afterResponse: response => !this.fields.gameID && (this.fields.gameID = response.rows[0]._id)
+						},
+						//create
+						{
+							id: "create",
+							action: "game.create",
+							rest: "/api/game/",
+							method: "POST",
+							fields: [
+								{
+									field: "date",
+									label: "date",
+									type: "text",
+									paramType: "body",
+									model: "gameDate"
+								},
+								{
+									field: "score",
+									label: "score",
+									type: "number",
+									paramType: "body",
+									model: "gameScore"
+								},
+								{
+									field: "id_categorie",
+									label: "id_categorie",
+									type: "text",
+									paramType: "body",
+									model: "gameId_categorie"
+								},
+								{
+									field: "id_user",
+									label: "id_user",
+									type: "text",
+									paramType: "body",
+									model: "gameId_user"
+								},
+								{
+									field: "difficulte",
+									label: "difficulte",
+									type: "text",
+									paramType: "body",
+									model: "gameDifficulte"
+								},
+								
+
+								
+							],
+							response: null,
+							status: null,
+							duration: null,
+							afterResponse: response => this.fields.gameID = response._id
+						},
+						{
+							id: "get", action: "game.get", rest: "/api/game/:id", method: "GET", fields: [
+								{field: "id", label: "ID", type: "text", paramType: "url", model: "gameID"}
+							], response: null, status: null, duration: null
+						},
+
+
 
 					],
 					products: [
