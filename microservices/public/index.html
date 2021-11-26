@@ -673,9 +673,30 @@
 								{
 									field: "answers",
 									label: "Answers",
-									type: "",
+									type: "string",
 									paramType: "body",
 									model: "questionAnswers"
+								},
+								{
+									field: "validAnswer",
+									label: "Valid Answer",
+									type: "text",
+									paramType: "body",
+									model: "questionValidAnswer"
+								},
+								{
+									field: "difficulty",
+									label: "Difficulty",
+									type: "text",
+									paramType: "body",
+									model: "questionDifficulty"
+								},
+								{
+									field: "categoryId",
+									label: "CategoryId",
+									type: "text",
+									paramType: "body",
+									model: "questionCategoryId"
 								},
 							],
 							response: null,
@@ -698,36 +719,49 @@
 							fields: [
 								{field: "id", label: "ID", type: "text", paramType: "url", model: "questionID"},
 								{
-									field: "username",
-									label: "Username",
+									field: "question",
+									label: "Question",
 									type: "text",
 									paramType: "body",
-									model: "userUsername"
+									model: "questionQuestion"
 								},
 								{
-									field: "email",
-									label: "Email",
-									type: "text",
+									field: "answers",
+									label: "Answers",
+									type: "string",
 									paramType: "body",
-									model: "userEmail"
+									model: "questionAnswers"
 								},
 								{
-									field: "password",
-									label: "Password",
+									field: "validAnswer",
+									label: "Valid Answer",
 									type: "text",
 									paramType: "body",
-									model: "userPassword"
+									model: "questionValidAnswer"
+								},
+								{
+									field: "difficulty",
+									label: "Difficulty",
+									type: "text",
+									paramType: "body",
+									model: "questionDifficulty"
+								},
+								{
+									field: "categoryId",
+									label: "CategoryId",
+									type: "text",
+									paramType: "body",
+									model: "questionCategoryId"
 								},
 							],
 							response: null,
 							status: null,
 							duration: null
 						},
-
 					],
-					categorie:[
+					categorie: [
 						//list
-					{
+						{
 							id: "list",
 							action: "categorie.list",
 							rest: "/api/categorie/",
@@ -757,7 +791,7 @@
 									paramType: "body",
 									model: "categorieDescription"
 								},
-								
+
 							],
 							response: null,
 							status: null,
@@ -772,8 +806,8 @@
 
 
 					],
-					game:[
-					{
+					game: [
+						{
 							id: "list",
 							action: "game.list",
 							rest: "/api/game/",
@@ -824,9 +858,8 @@
 									paramType: "body",
 									model: "gameDifficulte"
 								},
-								
 
-								
+
 							],
 							response: null,
 							status: null,
@@ -838,7 +871,6 @@
 								{field: "id", label: "ID", type: "text", paramType: "url", model: "gameID"}
 							], response: null, status: null, duration: null
 						},
-
 
 
 					],
@@ -971,7 +1003,7 @@
 
 				fields: {
 					productID: null,
-					productName: "Xiamoi Mi 9T",
+					productName: "Xiaomi Mi 9T",
 					productPrice: 299,
 					productValue: 1
 				},

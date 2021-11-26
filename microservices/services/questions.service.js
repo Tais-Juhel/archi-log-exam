@@ -6,13 +6,13 @@ const DbMixin = require("../mixins/db.mixin");
  */
 
 module.exports = {
-	name: "users",
+	name: "questions",
 
 
 	/**
 	 * Mixins
 	 */
-	mixins: [DbMixin("users")],
+	mixins: [DbMixin("questions")],
 
 	/**
 	 * Settings
@@ -20,15 +20,17 @@ module.exports = {
 	settings: {
 		fields: [
 			"_id",
-			"username",
-			"email",
-			"password"
-
+			"question",
+			"answers",
+			"validAnswer",
+			"difficulty",
+			"categoryId",
 		],
 		entityValidator: {
-			username: "string|min:3",
-			email: "string",
-			password: "string|min:3"
+			question: "string",
+			difficulty: "string",
+			categoryId: "string",
+			validAnswer: "string",
 		}
 
 	},

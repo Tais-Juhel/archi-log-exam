@@ -23,7 +23,6 @@ module.exports = {
 			"username",
 			"email",
 			"password"
-
 		],
 		entityValidator: {
 			username: "string|min:3",
