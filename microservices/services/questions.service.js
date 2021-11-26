@@ -6,30 +6,30 @@ const DbMixin = require("../mixins/db.mixin");
  */
 
 module.exports = {
-	name: "utilisateur",
+	name: "users",
 
 
-    /**
+	/**
 	 * Mixins
 	 */
-	mixins: [DbMixin("utilisateur")],
+	mixins: [DbMixin("users")],
 
 	/**
 	 * Settings
 	 */
 	settings: {
-        fields:[
-            "_id",
-            "username",
-            "email",
-            "pwd"
+		fields: [
+			"_id",
+			"username",
+			"email",
+			"password"
 
-        ],
-        entityValidator:{
-            username: "string|min:3",
-            email:"string",
-            pwd:"string|min:3"
-        }
+		],
+		entityValidator: {
+			username: "string|min:3",
+			email: "string",
+			password: "string|min:3"
+		}
 
 	},
 
@@ -41,25 +41,17 @@ module.exports = {
 	/**
 	 * Actions
 	 */
-	actions: {
-
-		
-		
-	},
+	actions: {},
 
 	/**
 	 * Events
 	 */
-	events: {
-
-	},
+	events: {},
 
 	/**
 	 * Methods
 	 */
-	methods: {
-
-	},
+	methods: {},
 
 	/**
 	 * Service created lifecycle event handler

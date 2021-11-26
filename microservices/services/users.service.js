@@ -1,16 +1,37 @@
 "use strict";
 
+const DbMixin = require("../mixins/db.mixin");
 /**
  * @typedef {import('moleculer').Context} Context Moleculer's Context
  */
 
 module.exports = {
-	name: "greeter",
+	name: "users",
+
+
+	/**
+	 * Mixins
+	 */
+	mixins: [DbMixin("users")],
 
 	/**
 	 * Settings
 	 */
-	settings: {},
+	settings: {
+		fields: [
+			"_id",
+			"username",
+			"email",
+			"password"
+
+		],
+		entityValidator: {
+			username: "string|min:3",
+			email: "string",
+			password: "string|min:3"
+		}
+
+	},
 
 	/**
 	 * Dependencies
@@ -20,39 +41,7 @@ module.exports = {
 	/**
 	 * Actions
 	 */
-	actions: {
-
-		/**
-		 * Say a 'Hello' action.
-		 *
-		 * @returns
-		 */
-		hello: {
-			rest: {
-				method: "GET",
-				path: "/hello"
-			},
-			async handler() {
-				return "Hello Moleculer";
-			}
-		},
-
-		/**
-		 * Welcome, a username
-		 *
-		 * @param {String} name - User name
-		 */
-		welcome: {
-			rest: "/welcome",
-			params: {
-				name: "string"
-			},
-			/** @param {Context} ctx  */
-			async handler(ctx) {
-				return `Welcome, ${ctx.params.name}`;
-			}
-		}
-	},
+	actions: {},
 
 	/**
 	 * Events
