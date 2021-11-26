@@ -23,41 +23,32 @@ module.exports = {
 		fields: [
 			"_id",
 			"date",
-            "score",
+			"score",
 			"id_categorie",
-            "id_user",
-            "difficulté"
+			"id_user",
+			"difficulté"
 		],
 
-		
-		
+
 	},
 
 	/**
 	 * Action Hooks
 	 */
-	hooks: {
-	},
+	hooks: {},
 
 	/**
 	 * Actions
 	 */
-	actions: {
-
-
-        
-
-
-    },
+	actions: {},
 
 	/**
 	 * Methods
 	 */
-	methods: {
-	},
+	methods: {},
 
 	/**
 	 * Fired after database connection establishing.
 	 */
-	
+
 };

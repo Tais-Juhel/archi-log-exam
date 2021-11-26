@@ -553,7 +553,6 @@
 					{id: "home", caption: "Home"},
 					{id: "users", caption: "Users service"},
 					{id: "questions", caption: "Questions service"},
-					{id: "products", caption: "Products service"},
 					{id: "categorie", caption: "Categorie service"},
 					{id: "game", caption: "Game service"},
 					{id: "nodes", caption: "Nodes"},
@@ -600,6 +599,35 @@
 									model: "userPassword"
 								},
 							],
+
+							response: null,
+							status: null,
+							duration: null,
+							afterResponse: response => this.fields.userID = response._id
+						},
+
+						{
+							id: "login",
+							action: "users.login",
+							rest: "/api/users/login",
+							method: "POST",
+							fields: [
+								{
+									field: "username",
+									label: "Username",
+									type: "text",
+									paramType: "body",
+									model: "userUsername"
+								},
+								{
+									field: "password",
+									label: "Password",
+									type: "text",
+									paramType: "body",
+									model: "userPassword"
+								},
+							],
+
 							response: null,
 							status: null,
 							duration: null,
@@ -874,139 +902,9 @@
 
 
 					],
-					products: [
-						{
-							id: "list",
-							action: "products.list",
-							rest: "/api/products/",
-							response: null,
-							status: null,
-							duration: null,
-							afterResponse: response => !this.fields.productID && (this.fields.productID = response.rows[0]._id)
-						},
-
-						{
-							id: "create",
-							action: "products.create",
-							rest: "/api/products/",
-							method: "POST",
-							fields: [
-								{
-									field: "name",
-									label: "Name",
-									type: "text",
-									paramType: "body",
-									model: "productName"
-								},
-								{
-									field: "price",
-									label: "Price",
-									type: "number",
-									paramType: "body",
-									model: "productPrice"
-								},
-							],
-							response: null,
-							status: null,
-							duration: null,
-							afterResponse: response => this.fields.productID = response._id
-						},
-
-						{
-							id: "get", action: "products.get", rest: "/api/products/:id", method: "GET", fields: [
-								{field: "id", label: "ID", type: "text", paramType: "url", model: "productID"}
-							], response: null, status: null, duration: null
-						},
-
-						{
-							id: "update",
-							action: "products.update",
-							rest: "/api/products/:id",
-							method: "PUT",
-							fields: [
-								{field: "id", label: "ID", type: "text", paramType: "url", model: "productID"},
-								{
-									field: "name",
-									label: "Name",
-									type: "text",
-									paramType: "body",
-									model: "productName"
-								},
-								{
-									field: "price",
-									label: "Price",
-									type: "number",
-									paramType: "body",
-									model: "productPrice"
-								},
-							],
-							response: null,
-							status: null,
-							duration: null
-						},
-
-						{
-							id: "increase",
-							action: "products.increaseQuantity",
-							rest: "/api/products/:id/quantity/increase",
-							method: "PUT",
-							fields: [
-								{field: "id", label: "ID", type: "text", paramType: "url", model: "productID"},
-								{
-									field: "value",
-									label: "Value",
-									type: "number",
-									paramType: "body",
-									model: "productValue"
-								},
-							],
-							response: null,
-							status: null,
-							duration: null
-						},
-
-						{
-							id: "decrease",
-							action: "products.decreaseQuantity",
-							rest: "/api/products/:id/quantity/decrease",
-							method: "PUT",
-							fields: [
-								{field: "id", label: "ID", type: "text", paramType: "url", model: "productID"},
-								{
-									field: "value",
-									label: "Value",
-									type: "number",
-									paramType: "body",
-									model: "productValue"
-								},
-							],
-							response: null,
-							status: null,
-							duration: null
-						},
-
-						{
-							id: "delete",
-							action: "products.delete",
-							rest: "/api/products/:id",
-							method: "DELETE",
-							fields: [
-								{field: "id", label: "ID", type: "text", paramType: "url", model: "productID"}
-							],
-							response: null,
-							status: null,
-							duration: null
-						},
-
-					]
 				},
 
-				fields: {
-					productID: null,
-					productName: "Xiaomi Mi 9T",
-					productPrice: 299,
-					productValue: 1
-				},
+				fields: {},
 
 				broker: null,
 				nodes: [],

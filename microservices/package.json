@@ -22,6 +22,7 @@
     "moleculer-repl": "^0.6.6"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "moleculer": "^0.14.16",
     "moleculer-db": "^0.8.15",
     "moleculer-db-adapter-mongo": "^0.4.13",

@@ -35,28 +35,20 @@ module.exports = {
 	/**
 	 * Action Hooks
 	 */
-	hooks: {
-	},
+	hooks: {},
 
 	/**
 	 * Actions
 	 */
-	actions: {
-
-
-        
-
-
-    },
+	actions: {},
 
 	/**
 	 * Methods
 	 */
-	methods: {
-	},
+	methods: {},
 
 	/**
 	 * Fired after database connection establishing.
 	 */
-	
+
 };
