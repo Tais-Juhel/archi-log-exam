@@ -2,11 +2,11 @@
 
 const DbMixin = require("../mixins/db.mixin");
 const {MoleculerClientError} = require("moleculer").Errors;
-const bcrypt = require('bcryptjs');
+const bcrypt = require("bcryptjs");
 const saltRounds = 10;
 
 /**
- * @typedef {import('moleculer').Context} Context Moleculer's Context
+ * @typedef {import("moleculer").Context} Context Moleculer's Context
  */
 
 module.exports = {
@@ -93,14 +93,12 @@ module.exports = {
 							message: "n'à pas été trouvé"
 						}]);
 					} else {
-						let token;
 						let hashedToken;
 						if (user.token !== null) {
 							hashedToken = user.token;
 						} else {
 							hashedToken = bcrypt.hashSync(user._id, saltRounds);
-							ctx.call("users.update", { id: user._id, token: hashedToken})
-							db.persistence.compactDatafile();
+							ctx.call("users.update", {id: user._id, token: hashedToken});
 						}
 						return {"username": user.username, "hashedToken": hashedToken};
 					}
