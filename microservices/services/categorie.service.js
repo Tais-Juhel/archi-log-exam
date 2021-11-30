@@ -3,7 +3,7 @@
 const DbMixin = require("../mixins/db.mixin");
 
 /**
- * @typedef {import('moleculer').Context} Context Moleculer's Context
+ * @typedef {import("moleculer").Context} Context Moleculer's Context
  */
 
 module.exports = {
@@ -40,7 +40,9 @@ module.exports = {
 	/**
 	 * Actions
 	 */
-	actions: {},
+	actions: {
+
+	},
 
 	/**
 	 * Methods

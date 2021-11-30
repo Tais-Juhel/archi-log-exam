@@ -418,7 +418,7 @@
 					<div class="content">
 						<div class="request">
 							<h4>Request:</h4>
-							<code>{{ item.method || 'GET' }} <a target="_blank" :href="item.rest">{{ item.rest
+							<code>{{ item.method || "GET" }} <a target="_blank" :href="item.rest">{{ item.rest
 								}} </a></code>
 							<a class="button" @click="callAction(item)">
 								<i class="fa fa-rocket"></i>
@@ -474,7 +474,7 @@
 					</td>
 					<td>
 						<div class="bar" :style="{ width: node.cpu != null ? node.cpu + '%' : '0' }"></div>
-						{{ node.cpu != null ? Number(node.cpu).toFixed(0) + '%' : '-' }}
+						{{ node.cpu != null ? Number(node.cpu).toFixed(0) + "%" : "-" }}
 					</td>
 				</tr>
 				</tbody>
@@ -734,9 +734,56 @@
 						},
 
 						{
-							id: "get", action: "questions.get", rest: "/api/questions/:id", method: "GET", fields: [
-								{field: "id", label: "ID", type: "text", paramType: "url", model: "questionID"}
-							], response: null, status: null, duration: null
+							id: "get",
+							action: "questions.get",
+							rest: "/api/questions/:id",
+							method: "GET",
+							fields: [
+								{
+									field: "id",
+									label: "ID",
+									type: "text",
+									paramType: "url",
+									model: "questionID"
+								}
+							],
+							response: null,
+							status: null,
+							duration: null
+						},
+
+						{
+							id: "findByCategoryAndDifficulty",
+							action: "questions.findByCategoryAndDifficulty",
+							rest: "/api/questions/cat-dif",
+							method: "POST",
+							fields: [
+								{
+									field: "categoryId",
+									label: "Category ID",
+									type: "text",
+									paramType: "body",
+									model: "questionCategoryId"
+								},
+								{
+									field: "difficulty",
+									label: "Difficulty",
+									type: "text",
+									paramType: "body",
+									model: "questionDifficulty"
+								},
+								{
+									field: "number",
+									label: "Questions Count",
+									type: "text",
+									paramType: "body",
+									model: "questionNumber"
+								},
+							],
+							response: null,
+							status: null,
+							duration: null,
+							afterResponse: response => this.fields.userID = response._id
 						},
 
 						{
@@ -827,9 +874,22 @@
 							afterResponse: response => this.fields.categorieID = response._id
 						},
 						{
-							id: "get", action: "categorie.get", rest: "/api/categorie/:id", method: "GET", fields: [
-								{field: "id", label: "ID", type: "text", paramType: "url", model: "categorieID"}
-							], response: null, status: null, duration: null
+							id: "get",
+							action: "categorie.get",
+							rest: "/api/categorie/:id",
+							method: "GET",
+							fields: [
+								{
+									field: "id",
+									label: "ID",
+									type: "text",
+									paramType: "url",
+									model: "categorieID"
+								}
+							],
+							response: null,
+							status: null,
+							duration: null
 						},
 
 
@@ -1008,7 +1068,7 @@
 					method,
 					body: body ? JSON.stringify(body) : null,
 					headers: {
-						'Content-Type': 'application/json'
+						"Content-Type": "application/json"
 					}
 				}).then(function (res) {
 					item.status = res.status;
@@ -1065,8 +1125,8 @@
 			},
 
 			updatePageResources() {
-				if (this.page === 'nodes') return this.updateNodeList();
-				if (this.page === 'services') return this.updateServiceList();
+				if (this.page === "nodes") return this.updateNodeList();
+				if (this.page === "services") return this.updateServiceList();
 			}
 		},
 

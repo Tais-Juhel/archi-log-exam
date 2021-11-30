@@ -1,8 +1,10 @@
 "use strict";
 
 const DbMixin = require("../mixins/db.mixin");
+const bcrypt = require("bcryptjs");
+const {MoleculerClientError} = require("moleculer").Errors;
 /**
- * @typedef {import('moleculer').Context} Context Moleculer's Context
+ * @typedef {import("moleculer").Context} Context Moleculer's Context
  */
 
 module.exports = {
@@ -43,7 +45,32 @@ module.exports = {
 	/**
 	 * Actions
 	 */
-	actions: {},
+	actions: {
+
+		findByCategoryAndDifficulty: {
+			rest: "POST /cat-dif",
+			params: {
+				categoryId: {type: "string"},
+				difficulty: {type: "string"},
+				number: {type: "string"}
+			},
+			async handler(ctx) {
+				const categoryIdParam = ctx.params.categoryId;
+				const difficultyParam = ctx.params.difficulty;
+				const numberParam = ctx.params.number;
+
+				if (categoryIdParam === "" || difficultyParam === "" || numberParam === "") {
+					throw new MoleculerClientError("Un ou plusieurs champs sont vides", 422);
+				} else {
+					return await this.adapter.find({
+						query: {difficulty: difficultyParam, categoryId: categoryIdParam},
+						limit: parseInt(numberParam)
+					});
+				}
+			}
+		},
+
+	},
 
 	/**
 	 * Events
