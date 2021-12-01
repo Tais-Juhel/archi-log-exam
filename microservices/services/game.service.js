@@ -70,6 +70,25 @@ module.exports = {
 			}
 		},
 
+		findUserGames: {
+			rest: "POST /user",
+			params: {userToken: {type: "string"}},
+			async handler(ctx) {
+				const userTokenParam = ctx.params.userToken;
+
+				if (userTokenParam === "") {
+					throw new MoleculerClientError("Le champ lié au token utilisateur est vide", 422);
+				} else {
+					let foundUserByToken = await ctx.call("users.find", {query: {token: userTokenParam}, limit: 1});
+					if (foundUserByToken.length === 0) {
+						throw new MoleculerClientError("Impossible de récupérer l'utilisateur lié au token donné", 401);
+					} else {
+						return await ctx.call("game.find", {query: {userId: foundUserByToken[0]._id}});
+					}
+				}
+			}
+		},
+
 	},
 
 	/**

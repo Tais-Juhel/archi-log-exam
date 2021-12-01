@@ -1004,6 +1004,26 @@
 							duration: null,
 							afterResponse: response => this.fields.gameID = response._id
 						},
+						// Get User games
+						{
+							id: "findUserGames",
+							action: "game.findUserGames",
+							rest: "/api/game/user",
+							method: "POST",
+							fields: [
+								{
+									field: "userToken",
+									label: "userToken",
+									type: "text",
+									paramType: "body",
+									model: "gameUserToken"
+								},
+							],
+							response: null,
+							status: null,
+							duration: null,
+							afterResponse: response => this.fields.gameID = response._id
+						},
 						{
 							id: "get", action: "game.get", rest: "/api/game/:id", method: "GET", fields: [
 								{field: "id", label: "ID", type: "text", paramType: "url", model: "gameID"}
