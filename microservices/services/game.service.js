@@ -2,6 +2,7 @@
 
 const DbMixin = require("../mixins/db.mixin");
 const bcrypt = require("bcryptjs");
+const _ = require("underscore");
 const constants = require("constants");
 const {MoleculerClientError} = require("moleculer").Errors;
 
@@ -86,6 +87,19 @@ module.exports = {
 						return await ctx.call("game.find", {query: {userId: foundUserByToken[0]._id}});
 					}
 				}
+			}
+		},
+
+		getLeaderboard: {
+			rest: "GET /leaderboard",
+			async handler(ctx) {
+				let foundGames = await ctx.call("game.find", {limit: 20});
+				foundGames.forEach(function (foundGame) {
+					foundGame.score = parseInt(foundGame.score);
+				});
+				foundGames = foundGames.sort((a, b) => b.score - a.score);
+				console.log(foundGames);
+				return await foundGames;
 			}
 		},
 

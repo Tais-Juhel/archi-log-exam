@@ -1024,6 +1024,17 @@
 							duration: null,
 							afterResponse: response => this.fields.gameID = response._id
 						},
+						// Get Games Leaderboard
+						{
+							id: "getLeaderboard",
+							action: "game.getLeaderboard",
+							rest: "/api/game/leaderboard",
+							response: null,
+							status: null,
+							duration: null,
+							afterResponse: response => !this.fields.gameID && (this.fields.gameID = response.rows[0]._id)
+						},
+						// Get game by ID
 						{
 							id: "get", action: "game.get", rest: "/api/game/:id", method: "GET", fields: [
 								{field: "id", label: "ID", type: "text", paramType: "url", model: "gameID"}
