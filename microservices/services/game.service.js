@@ -1,9 +1,12 @@
 "use strict";
 
 const DbMixin = require("../mixins/db.mixin");
+const bcrypt = require("bcryptjs");
+const constants = require("constants");
+const {MoleculerClientError} = require("moleculer").Errors;
 
 /**
- * @typedef {import('moleculer').Context} Context Moleculer's Context
+ * @typedef {import("moleculer").Context} Context Moleculer's Context
  */
 
 module.exports = {
@@ -24,9 +27,9 @@ module.exports = {
 			"_id",
 			"date",
 			"score",
-			"id_categorie",
-			"id_user",
-			"difficulté"
+			"categoryId",
+			"userId",
+			"difficulty"
 		],
 
 
@@ -40,7 +43,34 @@ module.exports = {
 	/**
 	 * Actions
 	 */
-	actions: {},
+	actions: {
+
+		insertNewGame: {
+			rest: "POST /new",
+			params: {
+				date: {type: "string"}, score: {type: "string"}, categoryId: {type: "string"}, userToken: {type: "string"}, difficulty: {type: "string"}
+			},
+			async handler(ctx) {
+				const dateParam = ctx.params.date;
+				const scoreParam = ctx.params.score;
+				const categoryIdParam = ctx.params.categoryId;
+				const userTokenParam = ctx.params.userToken;
+				const difficultyParam = ctx.params.difficulty;
+
+				if (dateParam === "" || scoreParam === "" || categoryIdParam === "" || userTokenParam === "" || difficultyParam === "") {
+					throw new MoleculerClientError("Un ou plusieurs champs sont vides", 422);
+				} else {
+					let foundUserByToken = await ctx.call("users.find", {query: {token: userTokenParam}, limit: 1});
+					if (foundUserByToken.length === 0) {
+						throw new MoleculerClientError("Impossible de récupérer l'utilisateur pour qui créer la partie", 401);
+					} else {
+						return await ctx.call("game.create", {"date": dateParam, "score": scoreParam, "categoryId": categoryIdParam, "userId": foundUserByToken[0]._id, "difficulty": difficultyParam});
+					}
+				}
+			}
+		},
+
+	},
 
 	/**
 	 * Methods

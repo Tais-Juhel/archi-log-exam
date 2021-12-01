@@ -921,30 +921,80 @@
 								{
 									field: "score",
 									label: "score",
-									type: "number",
+									type: "text",
 									paramType: "body",
 									model: "gameScore"
 								},
 								{
-									field: "id_categorie",
-									label: "id_categorie",
+									field: "categoryId",
+									label: "categoryId",
 									type: "text",
 									paramType: "body",
-									model: "gameId_categorie"
+									model: "gameCategoryId"
 								},
 								{
-									field: "id_user",
-									label: "id_user",
+									field: "userId",
+									label: "userId",
 									type: "text",
 									paramType: "body",
-									model: "gameId_user"
+									model: "gameUserId"
 								},
 								{
-									field: "difficulte",
-									label: "difficulte",
+									field: "difficulty",
+									label: "difficulty",
 									type: "text",
 									paramType: "body",
-									model: "gameDifficulte"
+									model: "gameDifficulty"
+								},
+
+
+							],
+							response: null,
+							status: null,
+							duration: null,
+							afterResponse: response => this.fields.gameID = response._id
+						},
+						// insert new game from vue call (decrypt token)
+						{
+							id: "insertNewGame",
+							action: "game.insertNewGame",
+							rest: "/api/game/new",
+							method: "POST",
+							fields: [
+								{
+									field: "date",
+									label: "date",
+									type: "text",
+									paramType: "body",
+									model: "gameDate"
+								},
+								{
+									field: "score",
+									label: "score",
+									type: "text",
+									paramType: "body",
+									model: "gameScore"
+								},
+								{
+									field: "categoryId",
+									label: "categoryId",
+									type: "text",
+									paramType: "body",
+									model: "gameCategoryId"
+								},
+								{
+									field: "userToken",
+									label: "userToken",
+									type: "text",
+									paramType: "body",
+									model: "gameUserToken"
+								},
+								{
+									field: "difficulty",
+									label: "difficulty",
+									type: "text",
+									paramType: "body",
+									model: "gameDifficulty"
 								},
 
 
