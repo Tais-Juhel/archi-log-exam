@@ -3,12 +3,10 @@
     <img src="../assets/title_PI_wave.svg" alt="logo" class="logo">
     <form action="" class="register-form">
       <div class="fields">
-        <input placeholder="Nom d'utilisateur" type="text">
-        <input placeholder="Mail" type="email">
+        <input placeholder="Identifiant" type="text">
         <input placeholder="Mot de passe" type="password">
-        <input placeholder="Confirmation du mot de passe" type="password">
       </div>
-      <ButtonCustom link="/login" name="Inscription" color="light" size="small"/>
+      <ButtonCustom link="/pregame" name="Connexion" color="light" size="small"/>
     </form>
   </div>
 </template>
@@ -17,7 +15,7 @@
 import ButtonCustom from '@/components/ButtonCustom'
 
 export default {
-  name: "Register",
+  name: "Login",
   components: {
     ButtonCustom
   }
@@ -43,7 +41,7 @@ export default {
     align-items: center;
     border-radius: 20px;
     width: 800px;
-    height: 450px;
+    height: 350px;
     background-color: #034078;
 
     .fields {
@@ -75,7 +73,7 @@ export default {
         position: absolute;
         z-index: -1;
         width: 800px;
-        height: 450px;
+        height: 350px;
         background-color: #1282A2;
         top: 15px;
         left: 15px;
