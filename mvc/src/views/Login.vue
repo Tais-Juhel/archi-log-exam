@@ -8,7 +8,6 @@
       </div>
       <ButtonCustom @click="login" name="Connexion" color="light" size="small"/>
     </form>
-    {{posts}}
   </div>
 </template>
 
@@ -36,9 +35,10 @@ export default {
         const params= {username:this.user , password:this.pwd};
         axios
         .post('http://localhost:3000/api/users/login/',params)
-        .then(response => (this.posts = response.data))
-        console.log(this.data)
-        this.$router.push('/pregame')
+        .then(res => {
+          document.cookie = "hashedToken="+res.data.hashedToken
+          this.$router.push('/pregame')
+        })
     }
 
   }

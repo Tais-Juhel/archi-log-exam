@@ -7,3 +7,4 @@
 {"username":"user77","email":"user77@test.fr","password":"test78","token":null,"_id":"X5wbwJGP0a7jPCjv"}
 {"username":"moa","email":"moa@moa.fr","password":"azerty","token":null,"_id":"QoYsb16wmnq0ro6O"}
 {"username":"lui","email":"lui@lui.com","password":"azerty","token":null,"_id":"QEeaYfxE4y5EwEMP"}
+{"username":"moa","email":"moa@moa.fr","password":"azerty","token":"$2a$10$pGrrumS9QvNn0IaJltVIUeBuLuskG9iaTWitu.lhd0w2Ng4LTblPy","_id":"QoYsb16wmnq0ro6O"}
