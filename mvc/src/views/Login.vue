@@ -33,10 +33,12 @@ export default {
 
   methods: {
     login: function(){
+        const params= {username:this.user , password:this.pwd};
         axios
-        .post('http://localhost:3000/api/users/login?username=',this.user,'&password=',this.pwd)
+        .post('http://localhost:3000/api/users/login/',params)
         .then(response => (this.posts = response.data))
         console.log(this.data)
+        this.$router.push('/pregame')
     }
 
   }

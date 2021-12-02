@@ -2,8 +2,7 @@
 
 const DbMixin = require("../mixins/db.mixin");
 const bcrypt = require("bcryptjs");
-const _ = require("underscore");
-const constants = require("constants");
+
 const {MoleculerClientError} = require("moleculer").Errors;
 
 /**
