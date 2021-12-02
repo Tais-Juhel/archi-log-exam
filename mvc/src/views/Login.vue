@@ -6,7 +6,7 @@
         <input placeholder="Identifiant" type="text">
         <input placeholder="Mot de passe" type="password">
       </div>
-      <ButtonCustom link="/pregame" name="Connexion" color="light" size="small"/>
+      <ButtonCustom name="Connexion" color="light" size="small"/>
     </form>
   </div>
 </template>

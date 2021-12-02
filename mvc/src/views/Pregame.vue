@@ -14,7 +14,7 @@
                 <option value="hard">Difficile</option>
             </select>
         </div>
-        <ButtonCustom link="/qcm" name="C'est parti !" color="dark" size="big"/>
+        <ButtonCustom name="C'est parti !" color="dark" size="big"/>
     </div>
 </template>
 

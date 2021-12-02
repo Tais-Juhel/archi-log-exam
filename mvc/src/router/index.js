@@ -25,6 +25,11 @@ const routes = [
     path: '/qcm',
     name: 'QCM',
     component: () => import('../views/QCM.vue')
+  },
+  {
+    path: '/score',
+    name: 'Score',
+    component: () => import('../views/Score.vue')
   }
 ]
 

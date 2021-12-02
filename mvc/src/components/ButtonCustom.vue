@@ -1,6 +1,6 @@
 <template>
   <div class="button-custom" :class="[color, size]">
-    <router-link :to="{path: link}">{{name}}</router-link>
+    {{name}}
   </div>
 </template>
 
@@ -8,7 +8,6 @@
 export default {
   name: 'ButtonCustom',
   props: {
-    link: String,
     name: String,
     color: String,
     size: String
@@ -21,6 +20,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 
   //size
   &.small {
@@ -39,24 +39,19 @@ export default {
   //color
   &.light {
     background-color: #FEFCFB;
-
-    a {
-      color: #034078;
-    }
+    color: #034078;
+  }
+  &.valid {
+    background-color: #17A940;
+    color: #FEFCFB;
   }
   &.dark {
     background-color: #034078;
-
-    a {
-      color: #FEFCFB;
-    }
+    color: #FEFCFB;
   }
   &.ultradark {
     background-color: #001F45;
-
-    a {
-      color: #FEFCFB;
-    }
+    color: #FEFCFB;
   }
 }
 </style>

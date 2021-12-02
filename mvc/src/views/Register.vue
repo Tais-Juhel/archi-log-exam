@@ -8,7 +8,7 @@
         <input placeholder="Mot de passe" type="password">
         <input placeholder="Confirmation du mot de passe" type="password">
       </div>
-      <ButtonCustom link="/login" name="Inscription" color="light" size="small"/>
+      <ButtonCustom name="Inscription" color="light" size="small"/>
     </form>
   </div>
 </template>
