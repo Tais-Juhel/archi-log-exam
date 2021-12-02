@@ -31,7 +31,8 @@ module.exports = {
 					"**"
 				],
 				cors:{
-					origin:'http://localhost:8080/'
+					origin:['http://localhost:8080/','http://localhost:3000/'],
+					Credential:false
 				},
 				// Route-level Express middlewares. More info: https://moleculer.services/docs/0.14/moleculer-web.html#Middlewares
 				use: [],

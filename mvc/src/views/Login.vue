@@ -3,8 +3,8 @@
     <img src="../assets/title_PI_wave.svg" alt="logo" class="logo">
     <form action="" class="register-form">
       <div class="fields">
-        <input placeholder="Identifiant" type="text">
-        <input placeholder="Mot de passe" type="password">
+        <input placeholder="Identifiant" v-model='user' type="text">
+        <input placeholder="Mot de passe" v-model='pwd' type="password">
       </div>
       <ButtonCustom link="/pregame" v-on:click="login" name="Connexion" color="light" size="small"/>
     </form>
@@ -21,20 +21,22 @@ export default {
     ButtonCustom
   },
   data() {
+      
     return {
+          user:"",
+          pwd:"",
           posts:[],
 
     };
   },
-  mounted() {
-    axios
-      .get('http://localhost:3000/api/users/')
-      .then(response => (this.posts = response.data))
-      console.log("test")  },
+  
 
   methods: {
     login: function(){
-      console.log('log');
+        axios
+        .post('http://localhost:3000/api/users/login?username=',this.user,'&password=',this.pwd)
+        .then(response => (this.posts = response.data))
+        console.log(this.data)
     }
 
   }
