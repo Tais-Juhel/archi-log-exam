@@ -30,7 +30,9 @@ module.exports = {
 				whitelist: [
 					"**"
 				],
-
+				cors:{
+					origin:'http://localhost:8080/'
+				},
 				// Route-level Express middlewares. More info: https://moleculer.services/docs/0.14/moleculer-web.html#Middlewares
 				use: [],
 

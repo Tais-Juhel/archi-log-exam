@@ -6,19 +6,39 @@
         <input placeholder="Identifiant" type="text">
         <input placeholder="Mot de passe" type="password">
       </div>
-      <ButtonCustom name="Connexion" color="light" size="small"/>
+      <ButtonCustom link="/pregame" v-on:click="login" name="Connexion" color="light" size="small"/>
     </form>
+    {{posts}}
   </div>
 </template>
 
 <script>
 import ButtonCustom from '@/components/ButtonCustom'
-
+import axios from 'axios';
 export default {
   name: "Login",
   components: {
     ButtonCustom
+  },
+  data() {
+    return {
+          posts:[],
+
+    };
+  },
+  mounted() {
+    axios
+      .get('http://localhost:3000/api/users/')
+      .then(response => (this.posts = response.data))
+      console.log("test")  },
+
+  methods: {
+    login: function(){
+      console.log('log');
+    }
+
   }
+
 }
 </script>
 
