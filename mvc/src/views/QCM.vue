@@ -14,6 +14,7 @@
 
 <script>
 import ButtonCustom from '@/components/ButtonCustom'
+import axios from 'axios'
 
 export default {
     name: "QCM",
@@ -43,6 +44,16 @@ export default {
     },
     components: {
         ButtonCustom
+    },
+    mounted() {
+        console.log(document.cookie)
+        const body = {
+            cateroyId: document.cookie.categorie,
+            difficulty: document.cookie.difficulty,
+            number: 5
+        }
+        axios.post("http://localhost:3000/api/questions/cat-dif", body)
+            .then(res => console.log(res.data))
     },
     methods: {
         check(id) {

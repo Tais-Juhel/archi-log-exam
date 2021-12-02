@@ -1,12 +1,6 @@
 <template>
   <nav>
     <img src="./assets/title_PI.svg" alt="logo" class="logo-nav" v-if="notTitleOnPage">
-    <div class="user" v-if="onHome">
-      <p class="username">PGM_T0p1_AyezPeur2M04</p>
-      <div class="classement">
-        <router-link to="">🏆</router-link>
-      </div>
-    </div>
   </nav>
   <router-view/>
 </template>

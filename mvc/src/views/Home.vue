@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <img src="../assets/title_PI.svg" alt="logo" class="logo">
-    <ButtonCustom  name="Nouvelle Partie" color="dark" size="big"/>
+    <ButtonCustom name="Nouvelle Partie" color="dark" size="big" @click="toGame"/>
   </div>
 </template>
 
@@ -12,6 +12,11 @@ export default {
   name: 'Home',
   components: {
     ButtonCustom
+  },
+  methods: {
+    toGame() {
+      this.$router.push('/register')
+    }
   }
 }
 </script>
