@@ -2,16 +2,16 @@
     <div class="pregame">
         <div class="category">
             <h2>Catégorie</h2>
-            <select>
-                <option value="">--Please choose an option--</option>
+            <select v-model="categChoice">
+                <option v-for="categ in categories" :key="categ.id" :value="categ.id">{{categ.name}}</option>
             </select>
         </div>
         <div class="difficulty">
             <h2>Difficulté</h2>
-            <select>
-                <option value="easy">Facile</option>
-                <option value="medium">Intermédiaire</option>
-                <option value="hard">Difficile</option>
+            <select v-model="difficulty">
+                <option value="1">Facile</option>
+                <option value="2">Intermédiaire</option>
+                <option value="3">Difficile</option>
             </select>
         </div>
         <ButtonCustom name="C'est parti !" color="dark" size="big"/>
@@ -20,11 +20,26 @@
 
 <script>
 import ButtonCustom from "@/components/ButtonCustom"
+import axios from 'axios'
 
 export default {
     name: "Pregame",
+    data() {
+        return {
+            categories: [],
+            categChoice: "",
+            difficulty: ""
+        }
+    },
     components: {
         ButtonCustom
+    },
+    mounted() {
+        axios.get("http://localhost:3000/api/categorie")
+            .then(res => {
+                console.log(res.data.rows)
+                this.categories = res.data.rows
+            })
     }
 }
 </script>
