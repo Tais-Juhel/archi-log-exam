@@ -8,7 +8,7 @@
                 <p>pts</p>
             </div>
         </div>
-        <ButtonCustom name="Retour au menu" size="big" color="ultradark"/>
+        <ButtonCustom name="Retour au menu" size="big" color="ultradark" @click="toHome"/>
     </div>
 </template>
 
@@ -24,6 +24,11 @@ export default {
     },
     components: {
         ButtonCustom
+    },
+    methods: {
+        toHome() {
+            this.$router.push('/')
+        }
     }
 }
 </script>

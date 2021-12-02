@@ -3,7 +3,7 @@
         <div class="category">
             <h2>Catégorie</h2>
             <select v-model="categChoice">
-                <option v-for="categ in categories" :key="categ.id" :value="categ.id">{{categ.name}}</option>
+                <option v-for="categ in categories" :key="categ.id" :value="categ._id">{{categ.name}}</option>
             </select>
         </div>
         <div class="difficulty">
@@ -14,7 +14,7 @@
                 <option value="3">Difficile</option>
             </select>
         </div>
-        <ButtonCustom name="C'est parti !" color="dark" size="big"/>
+        <ButtonCustom name="C'est parti !" color="dark" size="big" @click="validParams"/>
     </div>
 </template>
 
@@ -40,6 +40,13 @@ export default {
                 console.log(res.data.rows)
                 this.categories = res.data.rows
             })
+    },
+    methods: {
+        validParams() {
+            document.cookie = "categorie="+this.categChoice
+            document.cookie = "difficulty="+this.difficulty
+            this.$router.push('/qcm')
+        }
     }
 }
 </script>
