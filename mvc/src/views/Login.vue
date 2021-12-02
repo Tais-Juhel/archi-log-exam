@@ -6,7 +6,7 @@
         <input placeholder="Identifiant" type="text">
         <input placeholder="Mot de passe" type="password">
       </div>
-      <ButtonCustom link="/pregame" v-on:click="login" name="Connexion" color="light" size="small"/>
+      <ButtonCustom @click="login" name="Connexion" color="light" size="small"/>
     </form>
     {{posts}}
   </div>

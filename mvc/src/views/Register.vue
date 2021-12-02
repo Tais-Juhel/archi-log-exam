@@ -3,23 +3,48 @@
     <img src="../assets/title_PI_wave.svg" alt="logo" class="logo">
     <form action="" class="register-form">
       <div class="fields">
-        <input placeholder="Nom d'utilisateur" type="text">
-        <input placeholder="Mail" type="email">
-        <input placeholder="Mot de passe" type="password">
-        <input placeholder="Confirmation du mot de passe" type="password">
+        <input placeholder="Nom d'utilisateur" type="text" v-model="user.username">
+        <input placeholder="Mail" type="email" v-model="user.email">
+        <input placeholder="Mot de passe" type="password" v-model="user.password">
+        <input placeholder="Confirmation du mot de passe" type="password" v-model="password2">
       </div>
-      <ButtonCustom name="Inscription" color="light" size="small"/>
+      <ButtonCustom name="Inscription" color="light" size="small" @click="register"/>
     </form>
   </div>
 </template>
 
 <script>
 import ButtonCustom from '@/components/ButtonCustom'
+import axios from 'axios'
 
 export default {
   name: "Register",
   components: {
     ButtonCustom
+  },
+  data() {
+    return {
+      user: {
+        username: "",
+        email: "",
+        password: ""
+      },
+      password2: ""
+    }
+  },
+  methods: {
+    register() {
+      if(this.user.password === this.password2) {
+        if(this.user.password.length >= 6) {
+          axios.post('http://localhost:3000/api/users',this.user)
+          this.$router.push("/login")
+        } else {
+          alert('Le mot de passe doit contenir au moins 6 caractères')
+        }
+      } else {
+        alert('Les mot de passe doivent être identique')
+      }
+    }
   }
 }
 </script>
